@@ -1,8 +1,9 @@
 // load the things we need
-var express = require('express');
-var app = express();
+const express = require('express');
 const bodyParser  = require('body-parser');
-app.use(bodyParser.urlencoded());
+
+const app = express();
+app.use(bodyParser.json());
 // required module to make calls to a REST API
 const axios = require('axios');
 
@@ -17,7 +18,7 @@ app.set('view engine', 'ejs');
 
 // index page
 //app.get('/', function(req, res) {
-//    res.render('./index');
+//    res.render('frontend/pages/index');
 //});
 
 

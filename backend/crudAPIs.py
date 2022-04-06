@@ -1,6 +1,6 @@
 import flask
 from flask import jsonify, make_response, request
-from mssql import create_cnxn, execute_query, execute_read_query
+from mssql import create_cnxn, execute_query, execute_read_query, execute_read_dic
 
 #setting up an application name
 app = flask.Flask(__name__) #sets up the application
@@ -12,7 +12,7 @@ def home():
     return "<h1>Test Connection</h1>"
 
 # returns table data
-@app.route('/api/getcustomers', methods=['GET'])
+@app.route('/api/customers', methods=['GET'])
 def getcustomers():
     #connect to database 
     cnxn = create_cnxn('cis3365.cmw1mzqnf8ed.us-east-2.rds.amazonaws.com,1433', 'Synfoco', 'synfoco', 'synfocospring22')
@@ -20,6 +20,13 @@ def getcustomers():
     #execute sql return statement and get customer records
     customers = execute_read_query(cnxn, query)
     return jsonify(customers)
+
+@app.route('/api/testpost', methods=['POST'])
+def testpost():
+    req_data = request.get_json()
+    newid = req_data['id']
+    newfn = req_data['firstname']
+    return 'ID: {}, Name: {}'.format(newid, newfn)
 
 # test connection
 @app.route('/api/cnxn', methods=['GET'])
@@ -32,10 +39,6 @@ def testcnxn():
     """
     #execute sql return statement and get customer records
     customers = execute_read_query(cnxn, query)
-    # append records into list
-    ##records = []
-    ##for row in customers:
-        ##records.append(row)
     return jsonify(customers)
 
 

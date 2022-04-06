@@ -33,15 +33,31 @@ def execute_query(cnxn, query):
     except Error as e:
         print(f"The error '{e}' occurred")
 
+#returns query value list into JSON serializable format
 def execute_read_query(cnxn, query):
     cursor = cnxn.cursor()
     result = None
-    data = []
+    query_values = []
     try:
         cursor.execute(query)
         result = cursor.fetchall()
         for row in result:
-            data.append([x for x in row])
-        return data
+            query_values.append([x for x in row])
+        #EXAMPLE: query_values = [[1, 'Will'], [2, 'John']]
+        return query_values
+    except Error as e:
+        print(f"The error '{e}' occurred")
+
+# returns query with a list of dictionaries retrieved from database into serializable format
+def execute_read_dic(cnxn, query):
+    cursor = cnxn.cursor()
+    results = []
+    try:
+        cursor = cursor.execute(query)
+        columns = [column[0] for column in cursor.description]
+        for row in cursor.fetchall():
+            results.append(dict(zip(columns, row)))
+        #EXAMPLE: results = [{'id': 1, 'name': 'Will', }, {'id': 2, 'name': 'John'}]
+        return results
     except Error as e:
         print(f"The error '{e}' occurred")
