@@ -4,8 +4,10 @@ from pyodbc import Error
 database = 'Synfoco'
 username = 'synfoco'
 password = 'synfocospring22'
-cnxn = pyodbc.connect('DRIVER={ODBC Driver 18 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor = cnxn.cursor()"""
+#cnxn = pyodbc.connect('Driver={SQL Server}; Server=172.26.54.133;'
+#                      'Database=Synfoco_Logistic_Management_System;'
+#                      'UID=synfoco;PWD=Synfoco16;''Trusted_connection=no;')
 # cnxn = create_cnxn('cis3365.cmw1mzqnf8ed.us-east-2.rds.amazonaws.com,1433', 'Synfoco', 'synfoco', 'synfocospring22')
 
 
@@ -17,7 +19,7 @@ def create_cnxn(server_name, db_name, user_name, user_password):
         username = user_name
         password = user_password
         cnxn = pyodbc.connect(
-            'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+password+';Trusted_Connection=no;'
+            'DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+password+';Trusted_Connection=no;'
         )
         print("Connection established successfully.")
     except Error as e:

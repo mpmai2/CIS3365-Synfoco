@@ -15,7 +15,7 @@ def home():
 @app.route('/api/customers', methods=['GET'])
 def getcustomers():
     #connect to database 
-    cnxn = create_cnxn('cis3365.cmw1mzqnf8ed.us-east-2.rds.amazonaws.com,1433', 'Synfoco', 'synfoco', 'synfocospring22')
+    cnxn = create_cnxn('172.26.54.133', 'Synfoco_Logistic_Management_System', 'synfoco', 'Synfoco16')
     query = 'SELECT * FROM Customers'
     #execute sql return statement and get customer records
     customers = execute_read_query(cnxn, query)
@@ -32,7 +32,7 @@ def testpost():
 @app.route('/api/cnxn', methods=['GET'])
 def testcnxn():
     #connect to database 
-    cnxn = create_cnxn("cis3365.cmw1mzqnf8ed.us-east-2.rds.amazonaws.com,1433", "Synfoco", "synfoco", "synfocospring22")
+    cnxn = create_cnxn('172.26.54.133', 'Synfoco_Logistic_Management_System', 'synfoco', 'Synfoco16')
     query = """
     SELECT * FROM Customers
     WHERE ID = 1
