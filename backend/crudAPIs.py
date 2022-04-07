@@ -108,7 +108,7 @@ def addcustomer():
         flash('Customer Added Successfully!')
         return 'Success'
 
-#TODO ADD record in Drivers table
+#DONE ADD record in Drivers table
 @app.route('/api/drivers', methods=['POST'])
 def adddriver():
     #connect to database 
@@ -123,24 +123,60 @@ def adddriver():
         policynum = request.form['policy_number']
         policyexp = request.form['policy_expiration']
         employeeID = request.form['employeeID']
-        rating = request.form['rating']
-        
-        
-        rating = request.form['rating']
+
         query = """
         INSERT INTO Drivers 
-        (Driver_FN, Driver_LN, Contact_Number, Email, Company_ID, Insurance_ID, Policy_Number, Policy_Expiration, Driver_Rating)
+        (Driver_FN, Driver_LN, Contact_number, Email, Company_ID, Insurance_ID, Policy_Number, Policy_Expiration, Employee_ID)
         VALUES ('%s', '%s', '%s', '%s', %s, %s, '%s', '%s', %s, %s)
-        """ % (firstname, lastname, phone, email, companyID, insuranceID, policynum, policyexp, employeeID, rating)
-        
+        """ % (firstname, lastname, phone, email, companyID, insuranceID, policynum, policyexp, employeeID)
+    
         execute_query(cnxn, query)
-        flash('Customer Added Successfully!')
+        flash('Driver Added Successfully!')
         return 'Success'
 
+#DONE ADD record in Employees table
+@app.route('/api/employees', methods=['POST'])
+def addemployee():
+    #connect to database 
+    cnxn = create_cnxn('172.26.54.133', 'Synfoco_Logistic_Management_System', 'synfoco', 'Synfoco16')
+    if request.method == 'POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        position = request.form['position']
+        phone = request.form['phone']
+        email = request.form['email']
 
+        query = """
+        INSERT INTO Employees 
+        (Emp_FN, Emp_LN, Emp_Position, Emp_Contact_Number, Emp_Email)
+        VALUES ('%s', '%s', '%s', '%s')
+        """ % (firstname, lastname, position, phone, email)
+    
+        execute_query(cnxn, query)
+        flash('Employee Added Successfully!')
+        return 'Success'
 
+#TODO ADD record in Orders table
+@app.route('/api/Orders', methods=['POST'])
+def addemployee():
+    #connect to database 
+    cnxn = create_cnxn('172.26.54.133', 'Synfoco_Logistic_Management_System', 'synfoco', 'Synfoco16')
+    if request.method == 'POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        position = request.form['position']
+        phone = request.form['phone']
+        email = request.form['email']
 
-
+        query = """
+        INSERT INTO Employees 
+        (Emp_FN, Emp_LN, Emp_Position, Emp_Contact_Number, Emp_Email)
+        VALUES ('%s', '%s', '%s', '%s')
+        """ % (firstname, lastname, position, phone, email)
+    
+        execute_query(cnxn, query)
+        flash('Employee Added Successfully!')
+        return 'Success'
 
 
 app.run()
