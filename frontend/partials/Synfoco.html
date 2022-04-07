@@ -1,0 +1,56 @@
+<!DOCTTYPE html>
+<head>
+    <link rel="stylesheet" href="Synfoco.css">
+</head>   
+<main>
+<body>
+
+    <div class="box">
+        <p>hello</p>
+        <img src="logo.png" alt="logo">
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openPage(event, 'Orders')" id="defaultOpen">Orders</button>
+        <button class="tablinks" onclick="openPage(event, 'Drivers')">Drivers</button>
+        <button class="tablinks" onclick="openPage(event, 'Customers')">Customers</button>
+        <button class="tablinks" onclick="openPage(event, 'Companies')">Companies</button>
+        <button class="tablinks" onclick="openPage(event, 'Employees')">Employees</button>
+        <button class="tablinks" onclick="openPage(event, 'Reports')">Reports</button>
+      </div>
+      
+      <div id="Orders" class="tabcontent">
+        <h3>1</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>Jeremy Smith</td>
+            </tr>
+        </table>
+      </div>
+      
+      <div id="Drivers" class="tabcontent">
+        <h3>2</h3>
+      </div>
+      
+      <div id="Customers" class="tabcontent">
+        <h3>3</h3>
+      </div>
+
+      <div id="Companies" class="tabcontent">
+        <h3>4</h3>
+      </div>
+
+      <div id="Employees" class="tabcontent">
+        <h3>5</h3>
+      </div>
+
+      <div id="Reports" class="tabcontent">
+        <h3>6</h3>
+      </div>
+</body>
+
+<script src="Synfoco.js"></script>
+</html>
