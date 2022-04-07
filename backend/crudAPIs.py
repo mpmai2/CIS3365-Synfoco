@@ -149,7 +149,7 @@ def addemployee():
         query = """
         INSERT INTO Employees 
         (Emp_FN, Emp_LN, Emp_Position, Emp_Contact_Number, Emp_Email)
-        VALUES ('%s', '%s', '%s', '%s')
+        VALUES ('%s', '%s', '%s', '%s', '%s')
         """ % (firstname, lastname, position, phone, email)
     
         execute_query(cnxn, query)
@@ -157,25 +157,30 @@ def addemployee():
         return 'Success'
 
 #TODO ADD record in Orders table
-@app.route('/api/Orders', methods=['POST'])
-def addemployee():
+@app.route('/api/orders', methods=['POST'])
+def addorder():
     #connect to database 
     cnxn = create_cnxn('172.26.54.133', 'Synfoco_Logistic_Management_System', 'synfoco', 'Synfoco16')
     if request.method == 'POST':
-        firstname = request.form['firstname']
-        lastname = request.form['lastname']
-        position = request.form['position']
-        phone = request.form['phone']
-        email = request.form['email']
+        Customer_ID = request.form['Customer_ID']
+        Order_Date = request.form['Order_Date']
+        Pickup_Location = request.form['Pickup_Location']
+        Delivery_Location = request.form['Delivery_Location']
+        Rate = request.form['Rate']
+        Payment_Type = request.form['Payment_Type']
+        Order_Status = request.form['Order_Status']
+        Commodity_ID = request.form['Commodity_ID']
+        Quantity = request.form['Quantity']
+        Container_ID = request.form['Container_ID']
 
         query = """
-        INSERT INTO Employees 
-        (Emp_FN, Emp_LN, Emp_Position, Emp_Contact_Number, Emp_Email)
-        VALUES ('%s', '%s', '%s', '%s')
-        """ % (firstname, lastname, position, phone, email)
+        INSERT INTO Orders
+        (Customer_ID, Order_Date, Pickup_Location, Delivery_Location, Rate, Payment_Type, Order_Status, Commodity_ID, Quantity, Container_ID)
+        VALUES (%s, '%s', '%s', '%s', '%s', '%s', '%s', %s, %s, %s)
+        """ % (Customer_ID, Order_Date, Pickup_Location, Delivery_Location, Rate, Payment_Type, Order_Status, Commodity_ID, Quantity, Container_ID)
     
         execute_query(cnxn, query)
-        flash('Employee Added Successfully!')
+        flash('Order Added Successfully!')
         return 'Success'
 
 
