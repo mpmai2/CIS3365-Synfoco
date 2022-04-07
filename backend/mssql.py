@@ -1,15 +1,13 @@
 import pyodbc
 from pyodbc import Error
-"""server = 'cis3365.cmw1mzqnf8ed.us-east-2.rds.amazonaws.com'
-database = 'Synfoco'
+"""server = '172.26.54.133'
+database = 'Synfoco_Logistic_Management_System'
 username = 'synfoco'
-password = 'synfocospring22'
+password = 'synfoco16'
 cursor = cnxn.cursor()"""
 #cnxn = pyodbc.connect('Driver={SQL Server}; Server=172.26.54.133;'
 #                      'Database=Synfoco_Logistic_Management_System;'
 #                      'UID=synfoco;PWD=Synfoco16;''Trusted_connection=no;')
-# cnxn = create_cnxn('cis3365.cmw1mzqnf8ed.us-east-2.rds.amazonaws.com,1433', 'Synfoco', 'synfoco', 'synfocospring22')
-
 
 def create_cnxn(server_name, db_name, user_name, user_password):
     cnxn = None

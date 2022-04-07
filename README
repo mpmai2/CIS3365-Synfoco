@@ -1,0 +1,8 @@
+tables: 
+[
+    Companies,
+    Customers,
+    Drivers,
+    Employees,
+    Orders
+]
